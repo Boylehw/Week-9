@@ -1,0 +1,200 @@
+
+import java.util.*;
+import javax.swing.*;
+
+
+@SuppressWarnings("unused")
+public class Tic {
+
+  
+
+
+	public static void main(String[] args) {
+		String Board;
+		String ComputerMove = null;	
+		String Move;
+		boolean WinnerComp = false;
+		boolean WinnerPlayer = false;
+		String Cell1 = "1";
+		String Cell2 = "2";
+		String Cell3 = "3";
+		String Cell4 = "4";
+		String Cell5 = "5";
+		String Cell6 = "6";
+		String Cell7 = "7";
+		String Cell8 = "8";
+		String Cell9 = "9";
+		int GameMove=0;
+		int CMove;
+		boolean BadNumber = false;
+		
+		//Open Loop 1
+		do{
+
+			
+
+					//board visual	
+					Board = Cell1 + "|"+ Cell2 + "|" + Cell3 + "\n";
+					Board = Board + "--	|-- |--\n";
+					Board = Board + Cell4 + "|" + Cell5 + "|" + Cell6+ "\n";
+					Board = Board + "-- | --| --\n";
+					Board = Board + Cell7 + "|" + Cell8 + "|" + Cell9+ "\n\n";
+		//Open Loop 2
+		do{
+			//Player Move
+			Move = JOptionPane.showInputDialog(null, Board + " Pick a number to make your move:  ");
+		//Board placement for Player
+		if (Move.equals("1") && Cell1=="1"){
+			Cell1="X";}
+		else if (Move.equals("2") && Cell2.equals("2")){
+			Cell2="X";}
+		else if (Move.equals("3")&& Cell3.equals("3")){
+			Cell3="X";}
+		else if (Move.equals("4")&& Cell4.equals("4")){
+			Cell4="X";}
+		else if (Move.equals("5")&& Cell5.equals("5")){
+			Cell5="X";}
+		else if (Move.equals("6")&& Cell6.equals("6")){
+			Cell6="X";}
+		else if (Move.equals("7")&& Cell7.equals("7")){
+			Cell7="X";}
+		else if (Move.equals("8")&& Cell8.equals("8")){
+			Cell8="X";}
+		else if (Move.equals("9")&& Cell9.equals("9")){
+			Cell9="X";}
+		else JOptionPane.showMessageDialog(null, " That space is already taken, please pick again");
+		BadNumber=true;
+		//Close Loop 2
+		}while (BadNumber=false);
+		//Add to game counter
+		GameMove = GameMove + 1;
+		//Rebuild Board
+		Board = Cell1 + "|"+ Cell2 + "|" + Cell3 + "\n";
+		Board = Board + "--	|-- |--\n";
+		Board = Board + Cell4 + "|" + Cell5 + "|" + Cell6+ "\n";
+		Board = Board + "-- | --| --\n";
+		Board = Board + Cell7 + "|" + Cell8 + "|" + Cell9+ "\n\n";
+		
+		// Winning combinations and break if win or out of moves
+		if (Cell1.equals("X") && (Cell2.equals("X")) && Cell3.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (Cell4.equals("X") && (Cell5.equals("X")) && Cell6.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (Cell7.equals("X") && (Cell8.equals("X")) && Cell9.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (Cell1.equals("X") && (Cell4.equals("X")) && Cell7.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (Cell2.equals("X") && (Cell5.equals("X")) && Cell8.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (Cell3.equals("X") && (Cell6.equals("X")) && Cell9.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (Cell1.equals("X") && (Cell5.equals("X")) && Cell9.equals("X")){
+			WinnerPlayer=true;
+			break;
+		}
+		else if (GameMove==9){
+			break;
+		}
+		//Open Loop 3
+		do {
+			//Computer pick
+			Random generator = new Random();
+			CMove = generator.nextInt(9) + 1;
+
+			if (CMove==1 && Cell1.equals("1")){
+				Cell1="O";
+			}
+			else if (CMove==2 && Cell2.equals("2")){
+				Cell2="O";
+			}
+			else if(CMove==3 && Cell3.equals("3")){
+				Cell3="O";
+			}
+			else if(CMove==4 && Cell4.equals("4")){
+				Cell4="O";
+			}
+			else if(CMove==5 && Cell5.equals("5")){
+				Cell5="O";
+			}
+			else if(CMove==6 && Cell6.equals("6")){
+				Cell6="O";
+			}
+			else if(CMove==7 && Cell7.equals("7")){
+				Cell7="O";
+			}
+			else if(CMove==8 && Cell8.equals("8")){
+				Cell8="O";
+			}
+			else if(CMove==9 && Cell9.equals("9")){
+				Cell9="O";
+			}
+			else BadNumber=true;
+			//close loop 3
+			}while (BadNumber=false);
+		//add to game counter
+			GameMove = GameMove + 1;
+			//Rebuild board
+			Board = Cell1 + "|"+ Cell2 + "|" + Cell3 + "\n";
+			Board = Board + "--	|-- |--\n";
+			Board = Board + Cell4 + "|" + Cell5 + "|" + Cell6+ "\n";
+			Board = Board + "-- | --| --\n";
+			Board = Board + Cell7 + "|" + Cell8 + "|" + Cell9+ "\n\n";
+			//Winning Combinations and break if win or out of moves
+			if (Cell1.equals("O") && (Cell2.equals("O")) && Cell3.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (Cell4.equals("O") && (Cell5.equals("O")) && Cell6.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (Cell7.equals("O") && (Cell8.equals("O")) && Cell9.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (Cell1.equals("O") && (Cell4.equals("O")) && Cell7.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (Cell2.equals("O") && (Cell5.equals("O")) && Cell8.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (Cell3.equals("O") && (Cell6.equals("O")) && Cell9.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (Cell1.equals("O") && (Cell5.equals("O")) && Cell9.equals("O")){
+				WinnerComp=true;
+				break;
+			}
+			else if (GameMove==9){
+				break;
+			}
+			//Close loop 1
+		}while ((WinnerComp != true) ^ (GameMove < 9) ^ (WinnerPlayer != true));
+		//End game messages
+		if (WinnerComp=true){
+			JOptionPane.showMessageDialog(null, "Computer Wins");
+		}
+		else if (WinnerPlayer=true){
+			JOptionPane.showMessageDialog(null, "Player Wins");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "tie");
+		}
+
+		}
+	}
